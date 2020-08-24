@@ -3,7 +3,7 @@
     "DisplayName": "NoHistory",
     "Author": "Hambeard",
     "Version": "1.0.0",
-    "ManagerVersion": "0.22.9.0",
+    "ManagerVersion": "0.22.9",
     "Requirements": [],
     "AssemblyName": "NoHistory.dll",
     "EntryMethod": "NoHistory.Main.Load"
