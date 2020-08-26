@@ -25,7 +25,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\..\..\..\Program Files %28x86%29\Steam\steamapps\common\Pathfinder Kingmaker\Mods\NoHistory\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -100,4 +100,13 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Release (
+  mkdir $(TargetName)
+  del $(TargetName).zip /Q
+  copy $(TargetName)$(TargetExt) .\$(TargetName)\$(TargetName)$(TargetExt) /Y
+  copy info.json .\$(TargetName)\info.json /Y
+  "C:\Program Files\7-Zip\7z.exe" u -tzip $(TargetName).zip $(TargetName)
+)</PostBuildEvent>
+  </PropertyGroup>
 </Project>
