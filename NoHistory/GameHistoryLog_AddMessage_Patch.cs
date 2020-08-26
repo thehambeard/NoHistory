@@ -10,7 +10,6 @@ namespace NoHistory
         private static string _path = (string)HarmonyLib.AccessTools.Property(_type, "Folder").GetValue(null);
         public static void Delete()
         {
-            Main.Logger.Log("DELETE");
             string history = Path.Combine(_path, "history");
             if (new FileInfo(history).Length != 0)
                 File.Create(history).Dispose();
