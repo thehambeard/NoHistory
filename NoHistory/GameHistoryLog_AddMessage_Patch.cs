@@ -11,8 +11,15 @@ namespace NoHistory
         public static void Delete()
         {
             string history = Path.Combine(_path, "history");
-            if (new FileInfo(history).Length != 0)
-                File.Create(history).Dispose();
+            try
+            {
+                if (new FileInfo(history).Length != 0)
+                    File.Create(history).Dispose();
+            }
+            catch (Exception ex)
+            {
+                Main.Logger.Error(ex.Message);
+            }
         }
     }
 
